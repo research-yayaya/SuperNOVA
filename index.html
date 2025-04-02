@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nail Disease Detector</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs"></script>
+</head>
+<body>
+
+    <h1>Nail Disease Detector</h1>
+    
+    <input type="file" id="imageUpload" accept="image/*">
+    <br>
+    <img id="preview" src="" alt="Image Preview" style="max-width: 200px;">
+    <br>
+    <button onclick="predict()">Analyze</button>
+
+    <h2>Result: <span id="resultText">Waiting...</span></h2>
+
+    <script src="script.js"></script>
+
+</body>
+</html>
