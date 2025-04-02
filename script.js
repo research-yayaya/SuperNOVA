@@ -2,7 +2,7 @@ let model;
 
 // Load the TensorFlow.js model
 async function loadModel() {
-    model = await tf.loadLayersModel('https://github.com/research-yayaya/SuperNOVA/blob/main/model.json');  // Replace with your actual model URL
+    model = await tf.loadLayersModel('https://research-yayaya.github.io/SuperNOVA/model/model.json');  // Replace with your actual model URL
     console.log("Model Loaded!");
 }
 
