@@ -4,7 +4,10 @@ let model;
 async function loadModel() {
     try {
         console.log("Loading model...");
-        model = await tf.loadLayersModel('https://research-yayaya.github.io/SuperNOVA/model/model.json');
+        model = await tf.loadLayersModel('https://research-yayaya.github.io/SuperNOVA/model/model.json', {
+            onProgress: (progress) => console.log(progress),
+            inputShape: [224, 224, 3]  // Specify the input shape here
+        });
         console.log("Model Loaded Successfully!");
         document.getElementById("status").innerText = "Model Loaded!";
 
@@ -16,6 +19,7 @@ async function loadModel() {
         document.getElementById("status").innerText = "Failed to load model.";
     }
 }
+
 
 // Call loadModel() when the page loads
 window.onload = () => {
