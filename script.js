@@ -22,7 +22,6 @@ window.onload = () => {
     loadModel();
 };
 
-
 // Handle image upload
 document.getElementById('imageUpload').addEventListener('change', function(event) {
     const reader = new FileReader();
@@ -46,7 +45,7 @@ async function predict() {
         let tensor = tf.browser.fromPixels(img)
             .resizeNearestNeighbor([224, 224]) // Resize to match model input
             .toFloat()
-            .expandDims();
+            .expandDims(0); // Add batch dimension to the tensor
 
         let predictions = await model.predict(tensor).data();
         let maxIndex = predictions.indexOf(Math.max(...predictions));
