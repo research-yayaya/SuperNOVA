@@ -4,22 +4,19 @@ let model;
 async function loadModel() {
     try {
         console.log("Loading model...");
-        model = await tf.loadLayersModel('https://research-yayaya.github.io/SuperNOVA/model/model.json', {
-            onProgress: (progress) => console.log(progress),
-            inputShape: [224, 224, 3]  // Specify the input shape here
-        });
+        model = await tf.loadLayersModel('https://research-yayaya.github.io/SuperNOVA/model/model.json');
         console.log("Model Loaded Successfully!");
         document.getElementById("status").innerText = "Model Loaded!";
 
         // 🔥 Fix: Initialize the model by making a dummy prediction
-        model.predict(tf.zeros([1, 224, 224, 3])); 
+        let dummyTensor = tf.zeros([1, 224, 224, 3]); // Shape [batch_size, 224, 224, 3]
+        model.predict(dummyTensor).dispose(); // Make a dummy prediction
 
     } catch (error) {
         console.error("Error loading model:", error);
         document.getElementById("status").innerText = "Failed to load model.";
     }
 }
-
 
 // Call loadModel() when the page loads
 window.onload = () => {
@@ -31,6 +28,7 @@ document.getElementById('imageUpload').addEventListener('change', function(event
     const reader = new FileReader();
     reader.onload = function() {
         document.getElementById('preview').src = reader.result;
+        document.getElementById('preview').style.display = "block"; // Show the image preview
     };
     reader.readAsDataURL(event.target.files[0]);
 });
