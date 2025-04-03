@@ -7,6 +7,10 @@ async function loadModel() {
         model = await tf.loadLayersModel('https://research-yayaya.github.io/SuperNOVA/model/model.json');
         console.log("Model Loaded Successfully!");
         document.getElementById("status").innerText = "Model Loaded!";
+
+        // 🔥 Fix: Initialize the model by making a dummy prediction
+        model.predict(tf.zeros([1, 224, 224, 3])); 
+
     } catch (error) {
         console.error("Error loading model:", error);
         document.getElementById("status").innerText = "Failed to load model.";
@@ -17,6 +21,7 @@ async function loadModel() {
 window.onload = () => {
     loadModel();
 };
+
 
 // Handle image upload
 document.getElementById('imageUpload').addEventListener('change', function(event) {
