@@ -5,20 +5,27 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Nail Disease Detector</title>
     <link rel="stylesheet" href="style.css">
+    
+    <!-- Load TensorFlow.js -->
     <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs"></script>
 </head>
 <body>
 
     <h1>Nail Disease Detector</h1>
     
+    <!-- Model Loading Status -->
+    <h3 id="status">Loading Model...</h3>  
+
+    <!-- Image Upload -->
     <input type="file" id="imageUpload" accept="image/*">
     <br>
-    <img id="preview" src="" alt="Image Preview" style="max-width: 200px;">
+    <img id="preview" src="" alt="Image Preview" style="max-width: 200px; display: none;">
     <br>
     <button onclick="predict()">Analyze</button>
 
     <h2>Result: <span id="resultText">Waiting...</span></h2>
 
+    <!-- Link to JavaScript -->
     <script src="script.js"></script>
 
 </body>
